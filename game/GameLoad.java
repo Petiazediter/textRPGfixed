@@ -22,8 +22,9 @@ public class GameLoad{
                 String[] savedata = line.split(cvsSplitBy);
                 s.level = Integer.parseInt(savedata[0]);
                 s.name = savedata[1];
-                s.health = Integer.parseInt(savedata[2]);
+                s.stamina = Integer.parseInt(savedata[2]);
                 s.cast = savedata[3];
+		s.basedmg = Integer.parseInt(savedata[4]);
             }
 
         } catch (FileNotFoundException e) {
@@ -47,7 +48,8 @@ public class GameLoad{
     public static PlayerDatas.Player createNewSave(){
         PlayerDatas.Player s = new PlayerDatas.Player();
         s.level = 1;
-        s.health = 100;
+        s.stamina = 10;
+	s.basedmg = 10;
         
         Scanner input = new Scanner(System.in);
         System.out.println("What's your character's name?");
@@ -61,7 +63,7 @@ public class GameLoad{
     }
 
     public static void saveGame(PlayerDatas.Player player){
-        String save = Integer.toString(player.level) +","+ player.name+","+ Integer.toString(player.health)+","+ player.cast;
+        String save = Integer.toString(player.level) +","+ player.name+","+ Integer.toString(player.stamina)+","+ player.cast+","+ player.basedmg;
         File file = new File(System.getProperty("user.dir") + "/gamesave.save");
         try {
             FileWriter w = new FileWriter(file);
