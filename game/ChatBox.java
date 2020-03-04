@@ -14,13 +14,26 @@ public class ChatBox{
 	
 	public static void chat(String colored, String text, String color){
 		if (color == "green"){
-			System.out.println(ANSI_GREEN + "[" + colored + "]:" + ANSI_RESET + " " + text);
+			type(ANSI_GREEN + "[" + colored + "]:" + ANSI_RESET + " " + text);
 		}else if (color == "red"){
-			System.out.println(ANSI_RED + "[" + colored + "]:" + ANSI_RESET + " " + text);
+			type(ANSI_RED + "[" + colored + "]:" + ANSI_RESET + " " + text);
 		}else if (color == "blue"){
-			System.out.println(ANSI_BLUE + "[" + colored + "]:" + ANSI_RESET + " " + text);
+			type(ANSI_BLUE + "[" + colored + "]:" + ANSI_RESET + " " + text);
 		}else{
-			System.out.println("[" + colored + "]: " + text);
+			type("[" + colored + "]: " + text);
 		}
 	}
+
+	public static void type(String text){
+		text += "\n";
+		for(int i = 0; i < text.length(); i++){
+			System.out.printf("%c", text.charAt(i));
+			try{
+				Thread.sleep(1);
+			}catch(InterruptedException ex){
+				Thread.currentThread().interrupt();
+			}
+		}
+	}
+
 }
