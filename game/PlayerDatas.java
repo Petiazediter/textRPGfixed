@@ -4,7 +4,8 @@ class PlayerDatas{
     public static class Player{
         int level;
         String name;
-        int health;
+        int stamina;
         String cast;
+	int basedmg;
     }
 }
