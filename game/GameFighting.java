@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class GameFighting {
 	public static boolean fighting(PlayerDatas.Player player, Enemies.Enemy enemy) {
-		
-		
 		ChatBox.chat("Enemy", enemy.name, "red");
 		Scanner input = new Scanner(System.in);
 		
