@@ -21,6 +21,7 @@ public class Inventory{
 	
 	public static void main(String[] args){
 		giveItem(1,1);
+		ChatBox.type("Fingás fejű geciputtonygeci");
 	}
 	
 	public static ArrayList<Item> getInventory(){
@@ -119,7 +120,7 @@ public class Inventory{
 			if (item.itemID == itemID){
 				if (item.stock >= stock){
 					return true;
-				}
+				} 
 			}
 		}
 		return false;

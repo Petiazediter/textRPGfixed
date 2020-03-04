@@ -66,7 +66,6 @@ public class GameFighting {
 					}
 				}
 			}
-		
 			if (enemy.stamina > 0 && player.stamina >0){
 				result = doBattle(player,enemy);
 			} else {
