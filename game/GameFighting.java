@@ -39,6 +39,7 @@ public class GameFighting {
 		Scanner input = new Scanner(System.in);
 		try{
 			ChatBox.type("Input:");
+			int choose = input.nextInt();
 			// Innen
 				
 			// IDE

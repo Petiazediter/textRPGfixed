@@ -12,7 +12,10 @@ import java.util.List;
 
 
 public class Inventory{
-	public static final String[] ALL_ITEMS = {"Stick"};
+	public static final String[] ALL_ITEMS = {
+		"Stick", // 1
+		"Sword", //2
+	};
 
 	public static class Item{
 		int itemID;
@@ -21,6 +24,7 @@ public class Inventory{
 	
 	public static void main(String[] args){
 		giveItem(1,1);
+		ChatBox.type("Fingás fejű geciputtonygeci");
 	}
 	
 	public static ArrayList<Item> getInventory(){
@@ -119,7 +123,7 @@ public class Inventory{
 			if (item.itemID == itemID){
 				if (item.stock >= stock){
 					return true;
-				}
+				} 
 			}
 		}
 		return false;

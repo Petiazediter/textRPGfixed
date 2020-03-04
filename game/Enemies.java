@@ -5,8 +5,7 @@ class Enemies{
         int level;
         int init;
         String name;
-		int stamina;
+	int stamina;
         int basedmg;
     }
 }
-
