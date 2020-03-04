@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public class Inventory{
-	public static final String[] ALL_ITEMS = {"Stick", "Health Potion"};
+	public static final String[] ALL_ITEMS = {"Stick", "Health Potion", "Gold"};
 
 	public static class Item{
 		int itemID;
@@ -71,7 +71,7 @@ public class Inventory{
 	public static void printItems(){
 		ArrayList<Item> items = getInventory();
 		for (Item item : items){
-			System.out.println(item.itemID + " (" + Integer.toString(item.stock) + " db)");
+			System.out.println(ALL_ITEMS[item.itemID-1] + " (x" + Integer.toString(item.stock) + ")");
 		}
 	}
 	
@@ -134,7 +134,7 @@ public class Inventory{
 					if (item.stock <= stock){
 						items.remove(i);
 					}else{
-						item.stock -= 1;
+						item.stock -= stock;
 					}
 					break;
 				}

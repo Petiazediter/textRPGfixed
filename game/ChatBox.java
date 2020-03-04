@@ -23,6 +23,17 @@ public class ChatBox{
 			type("[" + colored + "]: " + text);
 		}
 	}
+	public static void chatFast(String colored, String text, String color){
+		if (color == "green"){
+			System.out.println(ANSI_GREEN + "[" + colored + "]:" + ANSI_RESET + " " + text);
+		}else if (color == "red"){
+			System.out.println(ANSI_RED + "[" + colored + "]:" + ANSI_RESET + " " + text);
+		}else if (color == "blue"){
+			System.out.println(ANSI_BLUE + "[" + colored + "]:" + ANSI_RESET + " " + text);
+		}else{
+			System.out.println("[" + colored + "]: " + text);
+		}
+	}
 
 	public static void type(String text){
 		text += "\n";

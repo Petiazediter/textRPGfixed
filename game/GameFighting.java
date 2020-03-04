@@ -35,9 +35,12 @@ public class GameFighting {
 	}
 	
 	public static boolean doBattle(PlayerDatas.Player player, Enemies.Enemy enemy){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Press ENTER to continue!");
+		input.nextLine();
 		ChatBox.clearScreen();
 		boolean result = false;
-		Scanner input = new Scanner(System.in);
+		
 		try{
 			ChatBox.type("1) Attack\n2) Use item");
 			int choose = input.nextInt();
@@ -47,13 +50,16 @@ public class GameFighting {
 				enemy.stamina -= attack;
 				player.stamina -= enemy.basedmg;
 			} else if (choose == 2) {
-				ChatBox.type("1) Health Potion");
+				ChatBox.type("0) List my items\n1) Health Potion");
 				int potionChoice = input.nextInt();
-				if (potionChoice == 1) {
+				if (potionChoice == 0) {
+					Inventory.printItems();
+				} else if (potionChoice == 1) {
 					boolean hasItem = Inventory.hasItem(2, 1);
 					if (hasItem) {
 						Inventory.takeItem(2, 1);
 						ChatBox.chat("Inventory", "You used a Health Potion.", "green");
+						ChatBox.chat("Health", Integer.toString(player.stamina)+"->"+Integer.toString(player.stamina+10), "blue");
 						player.stamina += 10;
 					} else {
 						ChatBox.chat("Inventory", "You don't have any Health Potions left.", "red");

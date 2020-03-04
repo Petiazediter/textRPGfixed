@@ -56,7 +56,7 @@ public class GameLoad{
         s.name = input.nextLine();
 
         s.cast = "Mage";
-
+	Inventory.giveItem(3, 100);
         saveGame(s);
 
         return s;
