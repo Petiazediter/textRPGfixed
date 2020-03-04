@@ -19,7 +19,7 @@ public class GameEngine{
 					Enemies.Enemy goblin = new Enemies.Enemy();
 					goblin.level = 1;
 					goblin.init = 1;
-					goblin.stamina = 5;
+					goblin.stamina = 20;
 					goblin.basedmg = 10;
 					goblin.name = "Dezső";
 					GameFighting.fighting(player, goblin);
