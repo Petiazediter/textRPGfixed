@@ -12,11 +12,7 @@ import java.util.List;
 
 
 public class Inventory{
-	public static final String[] ALL_ITEMS = {
-		"Stick", // 1
-		"Sword", //2
-	};
-
+	public static final String[] ALL_ITEMS = {"Stick", "Health Potion"};
 	public static class Item{
 		int itemID;
 		int stock;	
