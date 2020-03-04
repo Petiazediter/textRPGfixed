@@ -3,13 +3,6 @@ import java.util.Scanner;
 
 public class GameFighting {
 	public static boolean fighting(PlayerDatas.Player player, Enemies.Enemy enemy) {
-<<<<<<< HEAD
-		System.out.println(player.name + enemy.name);
-		return true;
-		
-		if (player.init > enemy.init) {
-		}
-=======
 		int enemyHealth = enemy.stamina * 10; 
 		int playerHealth = player.stamina * 5;
 		System.out.println(enemy.name);
@@ -44,6 +37,5 @@ public class GameFighting {
 		}
 		System.out.println("\nBattle ended");
 		return false;
->>>>>>> f0ea8f6b52e14bb1f8f5f64a91caf90a2d6307c2
 	}
 }
