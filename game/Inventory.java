@@ -12,10 +12,15 @@ import java.util.List;
 
 
 public class Inventory{
+	public static final String[] ALL_ITEMS = {"Stick"};
 
 	public static class Item{
 		int itemID;
 		int stock;	
+	}
+	
+	public static void main(String[] args){
+		giveItem(1,1);
 	}
 	
 	public static ArrayList<Item> getInventory(){
@@ -63,13 +68,16 @@ public class Inventory{
         return items;		
 	}
 	
-	public static void main(String[] args){
-		giveItem(1,1);
+	public static void printItems(){
+		ArrayList<Item> items = getInventory();
+		for (Item item : items){
+			System.out.println(item.itemID + " (" + Integer.toString(item.stock) + " db)");
+		}
 	}
 	
 	public static void giveItem(int itemID,int stock){
-		String[] allItems = getAllItems();
-		System.out.println("You got a new item (" + allItems[itemID-1] + ")");
+		//System.out.println("You got a new item (" + allItems[itemID-1] + ")");
+		ChatBox.chat("Inventory","You got " + Integer.toString(stock) + " new " + ALL_ITEMS[itemID-1],"green");	
 		
 		boolean found = false;
 		
@@ -105,11 +113,33 @@ public class Inventory{
         }
 	}
 	
-	private static void SaveInventory(){
+	public static boolean hasItem(int itemID, int stock){
+		ArrayList<Item> items = getInventory();
+		for (Item item : items ){
+			if (item.itemID == itemID){
+				if (item.stock >= stock){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
-	private static String[] getAllItems(){
-		String[] allItems = {"Stick", "Health Potion"};
-		return allItems;
+	public static void takeItem(int itemID,int stock){
+		if (hasItem(itemID,stock)){
+			ArrayList<Item> items = getInventory();
+			for (int i = 0; i < items.size(); i++){
+				Item item = items.get(i);
+				if (item.itemID == itemID){
+					if (item.stock <= stock){
+						items.remove(i);
+					}else{
+						item.stock -= 1;
+					}
+					break;
+				}
+			}
+			SaveInventory(items);
+		}
 	}
 }
