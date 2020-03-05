@@ -13,16 +13,33 @@ public class GameEngine{
 				
 			
 				if (player.level == 1) {
-					ChatBox.chat("Storyteller","You are almost at the end of your journey, as you are getting close to the village, you hear a woman screaming.","blue");
-					ChatBox.chat("Storyteller","*You quickly turn to the direction of the sounds.","blue");
-					//ChatBox.chat("Storyteller", "Hello " + player.name + "! Baszódj meg XDDDDDD Ez én", "blue");
+
+					ChatBox.chat("Storyteller","You are almost at the end of your journey, as you are getting close to the village, you hear a woman 							screaming.You quickly turn to the direction of the sounds.","blue");
+					ChatBox.chat("Woman", "AAAAAAAAAAAAA! Help me!", "blue");
+					
 					Enemies.Enemy goblin = new Enemies.Enemy();
 					goblin.level = 1;
 					goblin.init = 1;
 					goblin.stamina = 20;
 					goblin.basedmg = 10;
-					goblin.name = "Dezső";
+					goblin.name = "Goblin";
 					GameFighting.fighting(player, goblin);
+					
+				}
+				
+				if (player.level == 2) {
+					ChatBox.chat("Storyteller", "The lady turns to you, still shocked");
+					ChatBox.chat("Woman", "Thank you traveller, you saved my life, how can I ever repay you?");
+					ChatBox.chat("Storyteller", "You are still confused, but you ask her for directions to town, to your luck she is also heading there", 							"blue");
+					ChatBox.chat("Storyteller", "As you arrive you see the town in flames, it turns out the town is under attack, the lady next to you has 							vanished, you hear a close mumbling");
+
+					Enemies.Enemy troll = new Enemies.Enemy();
+					troll.level = 2;
+					troll.init = 1;
+					troll.stamina = 40;
+					troll.basedmg = 8;
+					troll.name = "Troll";
+					GameFighting.fighting(player, troll);
 				}
 			//}
 			
