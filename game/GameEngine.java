@@ -20,12 +20,12 @@ public class GameEngine{
 				if ("1".equals(x)) {
 					boolean Fight = true;
 					if (player.level == 1) {
-						ChatBox.chat("Storyteller","You are almost at the end of your journey, as you are getting close to the village, you hear a woman screaming.You quickly turn to the direction of the 	sounds.","blue");
+						ChatBox.chat("Storyteller","You are almost at the end of your journey, as you are getting close to the village, you hear a woman screaming.You quickly turn to the direction of the sounds.","blue");
 						ChatBox.chat("Woman", "AAAAAAAAAAAAA! Help me!", "blue");
 						enemy.level = 1;
 						enemy.init = 1;
-						enemy.stamina = 2;
-						enemy.basedmg = 1;
+						enemy.stamina = 12;
+						enemy.basedmg = 2;
 						enemy.name = "Goblin";
 					} else if (player.level == 2) {
 						ChatBox.chat("Storyteller", "The lady turns to you, still shocked.", "blue");
@@ -34,8 +34,8 @@ public class GameEngine{
 						ChatBox.chat("Storyteller", "As you arrive you see the town in flames, it turns out the town is under attack, the lady next to you has vanished, you hear a close grunt.", "blue");
 						enemy.level = 2;
 						enemy.init = 1;
-						enemy.stamina = 40;
-						enemy.basedmg = 8;
+						enemy.stamina = 30;
+						enemy.basedmg = 4;
 						enemy.name = "Troll";
 					} else {
 						Fight = false;
@@ -44,13 +44,17 @@ public class GameEngine{
 						boolean win = GameFighting.fighting(player, enemy);
 						if (win) {
 							if (player.level == 1 ) {
-								Inventory.giveItem(3,100);
-								Inventory.giveItem(2,2);
+								Inventory.giveItem(3,50);
+								Inventory.giveItem(2,1);
 								Inventory.giveItem(1,1);
+							}
+							if (player.level == 2) {
+								Inventory.giveItem(3, 70);
 							}
 							player.level++;
 							player.stamina = 10;
 							ChatBox.chat("Success", "You gained a level", "green");
+							GameLoad.saveGame(player);
 						} else {
 							ChatBox.chat("Fail", "You died", "red");
 						}

@@ -3,7 +3,7 @@ package game;
 import java.util.Scanner;
 
 public class Shop {
-	public static final int[][] shopItems = {{2, 50}, {1, 0}, {4,0}};
+	public static final int[][] shopItems = {{2, 50}, {4, 110}};
 	
 	public static void showStore() {
 		int choose = 0;

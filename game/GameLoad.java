@@ -49,14 +49,16 @@ public class GameLoad{
         PlayerDatas.Player s = new PlayerDatas.Player();
         s.level = 1;
         s.stamina = 10;
-	s.basedmg = 10;
+	s.basedmg = 5;
         
         Scanner input = new Scanner(System.in);
         System.out.println("What's your character's name?");
         s.name = input.nextLine();
 
         s.cast = "Mage";
-	Inventory.giveItem(3, 100);
+	Inventory.giveItem(3, 50);
+	ChatBox.type("Press ENTER to continue!");
+	input.nextLine();
         saveGame(s);
 
         return s;

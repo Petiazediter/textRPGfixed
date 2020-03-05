@@ -14,8 +14,8 @@ import java.util.List;
 public class Inventory{
 	public static final String[] ALL_ITEMS = {"Stick", "Health Potion", "Gold","Sword"};
 	public static final int[][] WEAPONS = {
-		{1,5},	
-		{4,10},
+		{1,4},	
+		{4,8},
 	};
 	
 	public static boolean isWeapon(int itemID){
