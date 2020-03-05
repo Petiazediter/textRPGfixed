@@ -27,10 +27,10 @@ public class GameEngine{
 				}
 				
 				if (player.level == 2) {
-					ChatBox.chat("Storyteller", "The lady turns to you, still shocked");
-					ChatBox.chat("Woman", "Thank you traveller, you saved my life, how can I ever repay you?");
+					ChatBox.chat("Storyteller", "The lady turns to you, still shocked", "blue");
+					ChatBox.chat("Woman", "Thank you traveller, you saved my life, how can I ever repay you?", "blue");
 					ChatBox.chat("Storyteller", "You are still confused, but you ask her for directions to town, to your luck she is also heading there", 							"blue");
-					ChatBox.chat("Storyteller", "As you arrive you see the town in flames, it turns out the town is under attack, the lady next to you has 							vanished, you hear a close mumbling");
+					ChatBox.chat("Storyteller", "As you arrive you see the town in flames, it turns out the town is under attack, the lady next to you has 							vanished, you hear a close mumbling", "blue");
 
 					Enemies.Enemy troll = new Enemies.Enemy();
 					troll.level = 2;
