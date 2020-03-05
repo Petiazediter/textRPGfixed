@@ -18,6 +18,7 @@ public class GameEngine{
 				Scanner input = new Scanner(System.in);
 				String x = input.nextLine();
 				if ("1".equals(x)) {
+					boolean Fight = true;
 					if (player.level == 1) {
 						ChatBox.chat("Storyteller","You are almost at the end of your journey, as you are getting close to the village, you hear a woman screaming.You quickly turn to the direction of the 	sounds.","blue");
 						ChatBox.chat("Woman", "AAAAAAAAAAAAA! Help me!", "blue");
@@ -36,14 +37,25 @@ public class GameEngine{
 						enemy.stamina = 40;
 						enemy.basedmg = 8;
 						enemy.name = "Troll";
-					}
-					boolean win = GameFighting.fighting(player, enemy);
-					if (win) {
-						player.level++;
-						player.stamina = 10;
-						ChatBox.chat("Success", "You gained a level", "green");
 					} else {
-						ChatBox.chat("Fail", "You died", "red");
+						Fight = false;
+					}
+					if (Fight){
+						boolean win = GameFighting.fighting(player, enemy);
+						if (win) {
+							if (player.level == 1 ) {
+								Inventory.giveItem(3,100);
+								Inventory.giveItem(2,2);
+								Inventory.giveItem(1,1);
+							}
+							player.level++;
+							player.stamina = 10;
+							ChatBox.chat("Success", "You gained a level", "green");
+						} else {
+							ChatBox.chat("Fail", "You died", "red");
+						}
+					}else{
+						ChatBox.type("To be continued...");
 					}
 				} else if ("2".equals(x)) {
 					Shop.showStore();

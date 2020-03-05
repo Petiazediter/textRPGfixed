@@ -12,7 +12,78 @@ import java.util.List;
 
 
 public class Inventory{
-	public static final String[] ALL_ITEMS = {"Stick", "Health Potion", "Gold"};
+	public static final String[] ALL_ITEMS = {"Stick", "Health Potion", "Gold","Sword"};
+	public static final int[][] WEAPONS = {
+		{1,5},	
+		{4,10},
+	};
+	
+	public static boolean isWeapon(int itemID){
+		for (int[] weap : WEAPONS){
+			if (weap[0] == itemID){
+				return true;
+			}
+		}	
+		return false;
+	}
+	
+	public static int getWeaponStrength(int itemID){
+		for (int[] weap : WEAPONS){
+			if (weap[0] == itemID){
+				return weap[1];
+			}
+		}
+		return 0;
+	}
+	
+	public static boolean hasWeapon(){
+		ArrayList<Item> items = getInventory();	
+		for (Item item : items ){
+			if (isWeapon(item.itemID)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static int getWeapon(){
+		ArrayList<Item> items = getInventory();	
+		for (Item item : items ){
+			if (isWeapon(item.itemID)){
+				return item.itemID;
+			}
+		}
+		return 0;		
+	}
+	
+	public static void takeAllWeapons(){
+		ArrayList<Item> items = getInventory();	
+		for (Item item : items ){
+			if (isWeapon(item.itemID)){
+				takeItem(item.itemID,item.stock);
+			}
+		}		
+	}
+	
+	public static boolean canCarryWeapon(int itemID){
+		if (isWeapon(itemID)) {
+			if (hasWeapon()){
+				ArrayList<Item> items = getInventory();	
+				for (Item item : items ){
+					if (isWeapon(item.itemID)){
+						if (getWeaponStrength(item.itemID) >= getWeaponStrength(itemID)){
+							return false;
+						} else {
+							return true;
+						}
+					}
+				}		
+			}else{
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static class Item{
 		int itemID;

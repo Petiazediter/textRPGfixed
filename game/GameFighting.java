@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GameFighting {
 	public static boolean fighting(PlayerDatas.Player player, Enemies.Enemy enemy) {
-		ChatBox.chat("Enemy", enemy.name, "red");
+		
 		Scanner input = new Scanner(System.in);
 		
 		int enemyHealth = enemy.stamina * 10; 
@@ -27,17 +27,27 @@ public class GameFighting {
 		boolean result = false;
 		
 		try{
-			ChatBox.type("1) Attack\n2) Use item");
+			ChatBox.chat("Enemy", enemy.name, "red");
+			System.out.println(player.name + "'s health: " + Integer.toString(player.stamina));
+			System.out.println(enemy.name + "'s health: " + Integer.toString(enemy.stamina));
+			System.out.println("1) Attack\n2) Use item");
 			int choose = input.nextInt();
 			if (choose == 1) {
-				ChatBox.type(player.name + "'s health: " + Integer.toString(player.stamina));
-				ChatBox.type(enemy.name + "'s health: " + Integer.toString(enemy.stamina));
 				
+
+				
+				int weaponID = Inventory.getWeapon();
 				int attack = player.basedmg;
+				if (weaponID > 0){
+					attack += Inventory.getWeaponStrength(weaponID);
+				}
+				
 				enemy.stamina -= attack;
+				ChatBox.chatFast("Fight", "You dealt " + Integer.toString(attack) + " dmg to " + enemy.name + ".(" + Integer.toString(enemy.stamina + attack) + " -> " + enemy.stamina + ")","green");
 				player.stamina -= enemy.basedmg;
+				ChatBox.chatFast("Fight", enemy.name +" dealt " + Integer.toString(enemy.basedmg) + " dmg to you. (" + Integer.toString(player.stamina + enemy.basedmg) + " -> " + player.stamina + ")","red");
 			} else if (choose == 2) {
-				ChatBox.type("0) List my items\n1) Health Potion");
+				System.out.println("0) List my items\n1) Health Potion");
 				int potionChoice = input.nextInt();
 				if (potionChoice == 0) {
 					Inventory.printItems();

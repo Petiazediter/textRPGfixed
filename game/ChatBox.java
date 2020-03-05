@@ -40,7 +40,7 @@ public class ChatBox{
 		for(int i = 0; i < text.length(); i++){
 			System.out.printf("%c", text.charAt(i));
 			try{
-				Thread.sleep(1);
+				Thread.sleep(50);
 			}catch(InterruptedException ex){
 				Thread.currentThread().interrupt();
 			}
