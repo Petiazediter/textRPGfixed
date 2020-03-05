@@ -143,4 +143,15 @@ public class Inventory{
 			SaveInventory(items);
 		}
 	}
+	public static int getItemAmount(int itemID) {
+		if (hasItem(itemID, 1)) {
+			ArrayList<Item> items = getInventory();
+			for (Item item : items) {
+				if (item.itemID == itemID) {
+					return item.stock;
+				}
+			}
+		} 
+		return 0;
+	}
 }

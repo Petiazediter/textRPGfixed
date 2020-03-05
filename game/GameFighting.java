@@ -9,29 +9,14 @@ public class GameFighting {
 		int enemyHealth = enemy.stamina * 10; 
 		int playerHealth = player.stamina * 10;
 		int choose = 0;
-		/*while (enemyHealth > 0 && playerHealth > 0) {
-			try{	
-				System.out.println("1) Attack");
-				System.out.println("2) Use item");    
-				choose = input.nextInt();
-				if (choose == 1) {
-					enemyHealth -= player.basedmg;
-					System.out.println("Remaining enemy health:" + enemyHealth);
-					playerHealth -= enemy.basedmg;
-					System.out.println("Remaining health:" + playerHealth);
-					choose = input.nextInt();
-				} else if (choose == 2) {
-			 	       return false;
-				} else {
-					return true;
-				}
-			} catch (Exception e){
-			}
-		}*/
 		
 		boolean battle = doBattle(player,enemy);
 		System.out.println("Battle ended");
-		return false;
+		if (player.stamina > 0) {
+			return true;
+		} else {
+			return false; 
+		}
 	}
 	
 	public static boolean doBattle(PlayerDatas.Player player, Enemies.Enemy enemy){
@@ -45,7 +30,9 @@ public class GameFighting {
 			ChatBox.type("1) Attack\n2) Use item");
 			int choose = input.nextInt();
 			if (choose == 1) {
-				System.out.println(Integer.toString(enemy.stamina));
+				ChatBox.type(player.name + "'s health: " + Integer.toString(player.stamina));
+				ChatBox.type(enemy.name + "'s health: " + Integer.toString(enemy.stamina));
+				
 				int attack = player.basedmg;
 				enemy.stamina -= attack;
 				player.stamina -= enemy.basedmg;

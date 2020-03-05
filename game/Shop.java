@@ -16,7 +16,9 @@ public class Shop {
 		}*/
 		Scanner input = new Scanner(System.in);
 		while (true) {
+			ChatBox.clearScreen();
 			ChatBox.chatFast("Controls", "W/S - movement | X - exit | E - buy", "blue");
+			ChatBox.type("Gold: x" +Integer.toString(Inventory.getItemAmount(3)));
 			for (int i = 0; i < shopItems.length; i++) {
 				if (choose == i) {
 					System.out.print("->");
@@ -44,6 +46,8 @@ public class Shop {
 				}
 			} else if ("e".equals(key)) {
 				buyItem(choose);
+				ChatBox.type("Press ENTER to continue!");
+				input.nextLine();
 			}
 			ChatBox.clearScreen();
 		}
